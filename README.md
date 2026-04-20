@@ -55,4 +55,4 @@ Dashboard with real-time stats, lead management, AI message generation and expor
 
 ## Built by
 Mohammed Raza — AI Automation Developer
-Available for freelance: linkedin.com/in/mohammed-raza-74b840403
+Available for freelance: linkedin.com/in/mohammed-raza-dev
