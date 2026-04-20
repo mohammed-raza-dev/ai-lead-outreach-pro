@@ -1,6 +1,6 @@
 ﻿# AI Lead Outreach Pro
 
-An entrepreneur-grade AI-powered lead generation and outreach automation system built with FastAPI, React, and Google Gemini AI.
+An entrepreneur-grade AI-powered lead generation and outreach automation system built with FastAPI, React, and Groq AI (LLaMA 3.3 70B).
 
 ## Features
 - AI-generated personalised outreach messages (Email, LinkedIn DM, WhatsApp)
@@ -13,7 +13,7 @@ An entrepreneur-grade AI-powered lead generation and outreach automation system 
 ## Tech Stack
 - **Backend**: FastAPI + Python + SQLAlchemy (SQLite)
 - **Frontend**: React + Vite + Tailwind CSS
-- **AI**: Google Gemini API
+- **AI**: Groq API (LLaMA 3.3 70B) - Free & Fast
 - **Database**: SQLite
 
 ## Quick Start
@@ -28,13 +28,13 @@ cd ai-lead-outreach-pro
 ```bash
 cd backend
 pip install -r requirements.txt
+pip install groq
 ```
 
-### 3. Add your Gemini API key
+### 3. Add your API keys
 Create a `.env` file in the backend folder:
 
-
-Get your free key at: https://aistudio.google.com
+Get your free Groq API key at: https://console.groq.com
 
 ### 4. Run backend
 ```bash
@@ -50,6 +50,9 @@ npm run dev
 
 Open http://localhost:5173
 
+## Screenshots
+Dashboard with real-time stats, lead management, AI message generation and export.
+
 ## Built by
 Mohammed Raza — AI Automation Developer
-Available for freelance projects.
+Available for freelance: linkedin.com/in/mohammed-raza-74b840403
