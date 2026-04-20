@@ -1,10 +1,9 @@
-﻿import google.generativeai as genai
-import sys, os
+﻿from groq import Groq
+import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.config import settings
 
-genai.configure(api_key=settings.gemini_api_key)
-model = genai.GenerativeModel("gemini-2.0-flash-lite")
+client = Groq(api_key=settings.groq_api_key)
 
 PROMPTS = {
     "Email": "Write a cold outreach EMAIL with Subject line.\nFormat:\nSubject: ...\n\nBody: ...",
@@ -16,7 +15,7 @@ def generate_message(lead: dict, message_type: str, tone: str, sender_name: str,
     instruction = PROMPTS.get(message_type, PROMPTS["Email"])
     prompt = f"""You are an expert B2B outreach specialist.
 
-Lead: {lead.get('name','')}, {lead.get('role','')} at {lead.get('company','')} ({lead.get('industry','')})
+Lead: {lead.get("name","")}, {lead.get("role","")} at {lead.get("company","")} ({lead.get("industry","")})
 Sender: {sender_name}
 Offer: {offer}
 Tone: {tone}
@@ -33,9 +32,11 @@ Rules:
 Write ONLY the message. No explanation."""
 
     try:
-        response = model.generate_content(prompt)
-        return response.text.strip()
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=1000
+        )
+        return response.choices[0].message.content.strip()
     except Exception as e:
         return f"Generation error: {str(e)}"
-
-
